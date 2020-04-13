@@ -4,6 +4,8 @@
 
 package com.ecommerce.paymentservice.service;
 
+import com.ecommerce.paymentservice.model.OrderModel;
+
 public interface PaymentService {
-	public void pay(long order_id);
+	public void pay(OrderModel order);
 }

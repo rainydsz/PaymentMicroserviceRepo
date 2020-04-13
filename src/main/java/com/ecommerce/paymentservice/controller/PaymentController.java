@@ -18,18 +18,17 @@ public class PaymentController {
 	@Autowired
 	PaymentService paymentService;
 
-	public PaymentController(PaymentService paymentService) {
-		this.paymentService = paymentService;
-	}
-
 	@RequestMapping(method = RequestMethod.POST, value = "/checkout/payment", produces = "application/json")
 	public void payment() {
+
+		// Getting the order details from checkout service
 		OrderModel order = new OrderModel();
 		order.setId(1234567890);
 		order.setUser_id("rainydsz");
-		order.setOrder_details("Ordered 2 products");
+		order.setOrder_details("Groceries for the entire month");
 		order.setOrder_total(1890.50);
-		paymentService.pay(order.getId());
-		return;
+
+		// Calling the service class method
+		paymentService.pay(order);
 	}
 }

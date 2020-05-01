@@ -5,6 +5,7 @@
 package com.ecommerce.paymentservice.interceptor;
 
 import com.ecommerce.paymentservice.model.PaymentDetailsModel;
+import com.ecommerce.paymentservice.service.impl.PaymentServiceImpl;
 
 public interface Interceptor {
 	

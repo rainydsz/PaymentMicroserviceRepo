@@ -21,11 +21,16 @@ public class PaymentDao {
 
 		final String INSERT_QUERY = "insert into payment_details (payment_id, status, order_id, order_amount, order_details) values (?, ?, ?, ?, ?)";
 
-		paymentdetails.setOrder_id(order.getId());
-		paymentdetails.setOrder_amount(order.getOrder_total());
-		paymentdetails.setOrder_details(order.getOrder_details());
+		paymentdetails.setOrderId(order.getOrderId());
+		paymentdetails.setOrderAmount(order.getOrderTotal());
+		paymentdetails.setOrderDetails(order.getOrderDetails());
 
-		jdbcTemplate.update(INSERT_QUERY, paymentdetails.getPayment_id(), paymentdetails.getStatus(),
-				paymentdetails.getOrder_id(), paymentdetails.getOrder_amount(), paymentdetails.getOrder_details());
+		jdbcTemplate.update(INSERT_QUERY, paymentdetails.getPaymentId(), paymentdetails.getStatus(),
+				paymentdetails.getOrderId(), paymentdetails.getOrderAmount(), paymentdetails.getOrderDetails());
 	}
+
+	public void checkPaymentDetails(PaymentDetailsModel paymentDetailsModel) {
+		//Do nothing because database gets updated
+	}
+
 }

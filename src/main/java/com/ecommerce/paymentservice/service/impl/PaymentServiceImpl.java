@@ -1,11 +1,12 @@
 /*
 	@Created by Prashant,Tauseef,Tarun and Rainy
-*/
+ */
 package com.ecommerce.paymentservice.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ecommerce.paymentservice.adapter.PluggableAdapter;
 import com.ecommerce.paymentservice.bridgepattern.AbstractPayment;
 import com.ecommerce.paymentservice.bridgepattern.CCAvenue;
 import com.ecommerce.paymentservice.bridgepattern.CreditPayment;
@@ -22,16 +23,15 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Override
 	public void pay(OrderModel order) {
-		// TODO Auto-generated method stub
 
 		// Implementing the bridge design pattern
 		AbstractPayment payment = new CreditPayment();
-		payment.payment_gateway = new CCAvenue();
+		
+		
+		payment.setPaymentgateway( new PluggableAdapter(new CCAvenue()));
 		PaymentDetailsModel paymentdetails = payment.makePayment(order);
 
-		System.out.println("Payment status is: " + paymentdetails.getStatus());
-
-		if (paymentdetails.getStatus() == "SUCCESS") {
+		if (paymentdetails.getStatus().equals("SUCCESS")) {
 			paymentdao.update(paymentdetails, order);
 		}
 	}

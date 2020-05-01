@@ -15,60 +15,62 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "orders")
 public class OrderModel {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "order_id")
-	private long order_id;
+	private long orderId;
 
 	@Column(name = "user_id")
-	private String user_id;
+	private String userId;
 
 	@Column(name = "order_details")
-	private String order_details;
+	private String orderDetails;
 
 	@Column(name = "order_time")
-	private Timestamp order_time;
+	private Timestamp orderTime;
 
 	@Column(name = "order_total")
-	private Double order_total;
+	private Double orderTotal;
 
-	public long getId() {
-		return order_id;
+	public long getOrderId() {
+		return orderId;
 	}
 
-	public void setId(long id) {
-		this.order_id = id;
+	public void setOrderId(long orderId) {
+		this.orderId = orderId;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getOrder_details() {
-		return order_details;
+	public String getOrderDetails() {
+		return orderDetails;
 	}
 
-	public void setOrder_details(String order_details) {
-		this.order_details = order_details;
+	public void setOrderDetails(String orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 
-	public Timestamp getOrder_time() {
-		return order_time;
+	public Timestamp getOrderTime() {
+		return orderTime;
 	}
 
-	public void setOrder_time(Timestamp order_time) {
-		this.order_time = order_time;
+	public void setOrderTime(Timestamp orderTime) {
+		this.orderTime = orderTime;
 	}
 
-	public Double getOrder_total() {
-		return order_total;
+	public Double getOrderTotal() {
+		return orderTotal;
 	}
 
-	public void setOrder_total(Double order_total) {
-		this.order_total = order_total;
+	public void setOrderTotal(Double orderTotal) {
+		this.orderTotal = orderTotal;
 	}
+
 }

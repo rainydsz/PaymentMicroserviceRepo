@@ -11,18 +11,14 @@ public class DebitPayment extends AbstractPayment {
 
 	@Override
 	public PaymentDetailsModel makePayment(OrderModel order) {
-		// TODO Auto-generated method stub
 
 		PaymentDetailsModel paymentdetails = new PaymentDetailsModel();
 
-		String processstatus = payment_gateway.processPayment("Debit Card");
+		paymentgateway.processPayment("Debit Card");
 
 		// Checking the payment status
 		paymentdetails.setStatus(PaymentDetailsModel.SUCCESS);
-		if (processstatus.contentEquals(paymentdetails.getStatus())) {
-			System.out.println("Payment successful for order id: " + order.getId());
-		}
-		paymentdetails.setPayment_id(12345);
+		paymentdetails.setPaymentId(12345);
 		return paymentdetails;
 	}
 }

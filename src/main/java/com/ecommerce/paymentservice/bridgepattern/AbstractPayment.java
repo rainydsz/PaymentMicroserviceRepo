@@ -8,8 +8,21 @@ import com.ecommerce.paymentservice.model.PaymentDetailsModel;
 
 public abstract class AbstractPayment {
 
-	// Adding a reference to the payment gateway interface
-	public IPaymentGateway payment_gateway;
+	protected IPaymentGateway paymentgateway;
+	
+	
+
+	public IPaymentGateway getPaymentgateway() {
+		return paymentgateway;
+	}
+
+
+
+	public void setPaymentgateway(IPaymentGateway paymentgateway) {
+		this.paymentgateway = paymentgateway;
+	}
+
+
 
 	public abstract PaymentDetailsModel makePayment(OrderModel order);
 

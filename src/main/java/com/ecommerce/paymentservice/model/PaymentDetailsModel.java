@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+import com.ecommerce.paymentservice.interceptor.ConcreteFrameworkObserver;
+
 @Entity
 @Table(name = "payment_details")
 public class PaymentDetailsModel {
@@ -22,26 +25,28 @@ public class PaymentDetailsModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "payment_id")
-	private long payment_id;
+	private long paymentId;
 
 	@Column(name = "status")
 	private String status;
 
 	@Column(name = "order_id")
-	private long order_id;
+	private long orderId;
 
 	@Column(name = "order_amount")
-	private Double order_amount;
+	private Double orderAmount;
 
 	@Column(name = "order_details")
-	private String order_details;
+	private String orderDetails;
 
-	public long getPayment_id() {
-		return payment_id;
+	ConcreteFrameworkObserver observer = new ConcreteFrameworkObserver();
+
+	public long getPaymentId() {
+		return paymentId;
 	}
 
-	public void setPayment_id(long payment_id) {
-		this.payment_id = payment_id;
+	public void setPaymentId(long paymentId) {
+		this.paymentId = paymentId;
 	}
 
 	public String getStatus() {
@@ -52,28 +57,32 @@ public class PaymentDetailsModel {
 		this.status = status;
 	}
 
-	public long getOrder_id() {
-		return order_id;
+	public long getOrderId() {
+		return orderId;
 	}
 
-	public void setOrder_id(long order_id) {
-		this.order_id = order_id;
+	public void setOrderId(long orderId) {
+		this.orderId = orderId;
 	}
 
-	public String getOrder_details() {
-		return order_details;
+	public Double getOrderAmount() {
+		return orderAmount;
 	}
 
-	public void setOrder_details(String order_details) {
-		this.order_details = order_details;
+	public void setOrderAmount(Double orderAmount) {
+		this.orderAmount = orderAmount;
 	}
 
-	public Double getOrder_amount() {
-		return order_amount;
+	public String getOrderDetails() {
+		return orderDetails;
 	}
 
-	public void setOrder_amount(Double double1) {
-		this.order_amount = double1;
+	public void setOrderDetails(String orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+
+	public void notifyObserver() {
+		observer.update(this);
 	}
 
 }

@@ -4,16 +4,12 @@
 
 package com.ecommerce.paymentservice.bridgepattern;
 
-public class CCAvenue implements IPaymentGateway {
+public class CCAvenue implements ICCAvenue {
 
 	@Override
-	public String processPayment(String paymentSystem) {
-		// TODO Auto-generated method stub
-		
-		System.out.println("Using CCAvenue gateway for: " + paymentSystem);
+	public String makePayment(String paymentSystem) {
 
-		String status = "SUCCESS";
+		return "SUCCESS";
 
-		return status;
 	}
 }
